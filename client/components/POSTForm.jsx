@@ -1,3 +1,7 @@
+/* This form is pre-filled, when we submit it will send form data in a POST request 
+ * to create a new person
+ */
+
 import React, { Component } from 'react';
 import axios from 'axios';
 
@@ -14,7 +18,6 @@ class POSTForm extends Component {
 
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value })
-    console.log(this.state[e.target.name])
   }
 
   handleSubmit(e) {

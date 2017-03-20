@@ -38,7 +38,7 @@ const postNewPerson = (req, res) => {
 const updateAllFavoriteCities = (req, res) => {
   City.findOrCreate({
     where: {
-      name: "Brooklyn"
+      name: 'Brooklyn'
     }
   })
   .then(city => {
@@ -53,7 +53,7 @@ const updateAllFavoriteCities = (req, res) => {
     })
   })
   .then(() => {
-    res.send("You have updated all favorite cities.")
+    res.send('You have updated all favorite cities.')
   })
   .catch(err => {
     res.status(500).send(err.message);
@@ -97,7 +97,7 @@ const deletePersonById = (req, res) => {
     }
   })
   .then(() => {
-    res.send("You have deleted a person.")
+    res.send('You have deleted a person.')
   })
   .catch(err => {
     res.status(500).send(err.message);

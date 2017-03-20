@@ -1,15 +1,16 @@
-var express = require('express')
-var app = express()
-var bodyparser = require('body-parser')
-var path = require('path')
-var db = require('./db/models')
-var router = express.Router();
+const express = require('express')
+const router = express.Router();
+const app = express()
+const bodyparser = require('body-parser')
+const path = require('path')
+const db = require('./db/models')
 
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json())
 app.use(express.static('public'))
 
-// ********** Routes here **********
+/* Routes
+ */ 
 const personRoutes = require('./routes/personRoutes');
 
 app.use('/people', personRoutes)
