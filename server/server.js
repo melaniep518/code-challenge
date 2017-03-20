@@ -19,6 +19,5 @@ app.get('/*', function(req, res) {
 })
 
 db.sequelize.sync().then(function() {
-	console.log('successful')
-  app.listen(3000)
+  app.listen(process.env.PORT || 3000)
 })
