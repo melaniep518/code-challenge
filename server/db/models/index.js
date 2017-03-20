@@ -9,7 +9,6 @@ var db        = {};
 
 let sequelize = process.env.NODE_ENV === 'production' ? new Sequelize(process.env.DATABASE_URL) : new Sequelize('postgres://melaniewilliams@localhost:5432/spotify_code_challenge');
 
-
 fs
   .readdirSync(__dirname)
   .filter(function(file) {
