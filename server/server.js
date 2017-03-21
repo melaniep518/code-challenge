@@ -19,6 +19,6 @@ app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, '../client/views/index.html'))
 })
 
-db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync().then(function() {
   app.listen(process.env.PORT || 3000)
 })

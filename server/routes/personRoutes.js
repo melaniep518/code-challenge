@@ -3,8 +3,11 @@ const models = require('../db/models/index');
 const Person = models.Person;
 const City = models.City;
 
-const getAllPeople = (req, res) => {
+const getAllPeopleInOrderCreated = (req, res) => {
   Person.findAll({
+    order: [
+      ['createdAt', 'DESC']
+    ], 
     include: [City]
   })
   .then(people => {
@@ -38,7 +41,7 @@ const postNewPerson = (req, res) => {
 const updateAllFavoriteCities = (req, res) => {
   City.findOrCreate({
     where: {
-      name: 'Brooklyn'
+      name: req.body.city
     }
   })
   .then(city => {
@@ -54,21 +57,6 @@ const updateAllFavoriteCities = (req, res) => {
   })
   .then(() => {
     res.send('You have updated all favorite cities.')
-  })
-  .catch(err => {
-    res.status(500).send(err.message);
-  })
-}
-
-const getNewestPerson = (req, res) => {
-  Person.findOne({
-    order: [
-      ['createdAt', 'DESC']
-    ], 
-    include: [City]
-  })
-  .then(person => {
-    res.send(person)
   })
   .catch(err => {
     res.status(500).send(err.message);
@@ -105,12 +93,9 @@ const deletePersonById = (req, res) => {
 }
 
 router.route('/')
-  .get(getAllPeople)
+  .get(getAllPeopleInOrderCreated)
   .post(postNewPerson)
   .put(updateAllFavoriteCities)
-
-router.route('/newest')
-  .get(getNewestPerson)
 
 router.route('/:id')
   .get(getPersonById)

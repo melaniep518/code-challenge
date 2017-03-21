@@ -1,16 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react';
+import axios from 'axios';
 
-const DisplayContent = (props) => {
-  const spanStyle = {
-    fontWeight: 'normal' 
+class DisplayContent extends Component {
+  constructor() {
+    super();
+    this.state = {
+      favoriteCity: null,
+      showCity: false,
+    }
+    this.getPersonInfo = this.getPersonInfo.bind(this);
   }
 
-  return (
-    <div>
-      <h4><span style={spanStyle}>Person:</span> {props.person}</h4>
-      <h4><span style={spanStyle}>Favorite City:</span> {props.city}</h4>
-    </div>
-  )
+  getPersonInfo() {
+    axios.get(`/people/${this.props.id}`)
+    .then(person => {
+      this.setState({
+        favoriteCity: person.data.City.name,
+        showCity: !this.state.showCity,
+      })
+    })
+  }
+
+  render() {
+    return (
+      <div>
+        <li onClick={this.getPersonInfo}>{this.props.name}{this.state.showCity && ', ' + this.state.favoriteCity}</li>
+      </div>
+    )
+  }
 }
 
 export default DisplayContent;

@@ -5,7 +5,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import DisplayContent from './DisplayContent';
-import POSTForm from './POSTForm';
+import PersonForm from './PersonForm';
 
 class HTTPRequests extends Component {
   constructor() {
@@ -79,7 +79,7 @@ class HTTPRequests extends Component {
         <button onClick={this.getPeople}>GET People</button>
         
         <h4 style={headerStyle}>2. Click "Create Person" to make a POST request to /people, and create a new person</h4>
-        <POSTForm/>
+        <PersonForm/>
         
         <h4 style={headerStyle}>3. Click "GET Newest Person" to make a GET request to retrieve the object created in the previous request</h4>
         <button onClick={this.getNewestPerson}>GET Newest Person</button>
