@@ -38,7 +38,7 @@ const postNewPerson = (req, res) => {
   })
 }
 
-const updateAllFavoriteCities = (req, res) => {
+const updateFavoriteCity = (req, res) => {
   City.findOrCreate({
     where: {
       name: req.body.city
@@ -49,14 +49,12 @@ const updateAllFavoriteCities = (req, res) => {
       favoriteCity: city[0].dataValues.id
     }, {
       where: {
-        favoriteCity: {
-          $ne: city[0].dataValues.id
-        }
+        id: req.body.id
       }
     })
   })
   .then(() => {
-    res.send('You have updated all favorite cities.')
+    res.send('You have updated favorite city.')
   })
   .catch(err => {
     res.status(500).send(err.message);
@@ -95,7 +93,7 @@ const deletePersonById = (req, res) => {
 router.route('/')
   .get(getAllPeopleInOrderCreated)
   .post(postNewPerson)
-  .put(updateAllFavoriteCities)
+  .put(updateFavoriteCity)
 
 router.route('/:id')
   .get(getPersonById)

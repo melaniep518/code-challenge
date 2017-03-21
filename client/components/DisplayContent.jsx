@@ -22,10 +22,11 @@ class DisplayContent extends Component {
   }
 
   render() {
+    const listStyle = {
+      listStyleType: 'none',
+    }
     return (
-      <div>
-        <li onClick={this.getPersonInfo}>{this.props.name}{this.state.showCity && ', ' + this.state.favoriteCity}</li>
-      </div>
+      <li style={listStyle} onClick={this.getPersonInfo}>{this.props.name}{this.state.showCity && ', ' + this.state.favoriteCity}</li>
     )
   }
 }
