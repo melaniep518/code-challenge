@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-class DisplayContent extends Component {
+class IndividualPersonData extends Component {
   constructor() {
     super();
     this.state = {
@@ -31,4 +31,4 @@ class DisplayContent extends Component {
   }
 }
 
-export default DisplayContent;
+export default IndividualPersonData;

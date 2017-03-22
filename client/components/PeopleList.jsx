@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DisplayContent from './DisplayContent';
+import IndividualPersonData from './IndividualPersonData';
 
 const PeopleList = (props) => {
   const { people } = props;
@@ -20,7 +20,7 @@ const PeopleList = (props) => {
         <div key={person.id} style={divStyle}>
           <button name="delete" onClick={handleClick.bind(null, person)}>Delete</button>
           <button name="update" onClick={handleClick.bind(null, person)}>Update City</button>
-          <DisplayContent id={person.id} name={person.name}/>
+          <IndividualPersonData id={person.id} name={person.name}/>
         </div>
       )
     })
